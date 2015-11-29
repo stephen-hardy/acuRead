@@ -18,6 +18,7 @@
     "humidity",
     "forecasting"
   ],
+  "dependencies": { "node-hid": ">0.5.0" },
   "author": "Stephen Hardy",
   "license": "GPL-3.0",
   "bugs": {
