@@ -92,6 +92,7 @@ function Station(hid) {
 	Station.prototype.on = function(t, evt) { if (typeof evt === 'function') {
 		if (this._events[t].push(evt) === 1) { refreshInterval(this); this._refreshInterval = setInterval(refreshInterval, 18000, this); }
 		if (log) { console.log('Registered event'); }
+		return this;
 	} };
 		function refreshInterval(station) {
 			var diff = station.refresh(1);
