@@ -1,6 +1,16 @@
 # acuRead.js
 Node.js library for reading data (and updates) from AcuRite weather stations (currently supporting 02064C)
 
+
+
+# Example
+```
+var acuRead = require('acuRead');
+acuRead.stations[0].on('change', console.log);
+```
+
+
+
 # Usage
 
 
@@ -43,10 +53,42 @@ Node.js library for reading data (and updates) from AcuRite weather stations (cu
     * ***battery*** - (string) "OK" or "Low". Untested, and I don't know how/when the unit determines it is low. But, should match what is shown on the display.
     * ***speed*** - (number) Wind speed in miles per hour (MPH).
     * ***signal*** - (number) Values between 0 and 3 indicating signal strength.
-    * ***pressure*** - (number) Atmospheric pressure in millibars, read from the inside sensor in the display.
+    * ***pressure*** - (number) Atmospheric pressure in millibars, read from the inside sensor in the display. Please note that this value is unlikely to match the one listed on the display due to AcuRite's calculations.
     * ***inTemp*** - (number) Temperature in Farenheit, read from the inside sensor in the display.
     * ***dir*** - (string) Wind direction, represented as an abbreviation of (possible 16) secondary-intercardinal directions.
     * ***rain*** - (number) Rainfall in hundredths of an inch.
     * ***outTemp*** - (number) Temperature in Farenheit, read from the outside sensor
     * ***humidity*** - (number) Humidity percentage, read from the ***outside*** sensor
-    
+* **vendorId**
+  * ***Type:*** Number
+  * ***Description:*** VendorID of the weather station's USB device. Should always be 9408
+* **productId**
+  * ***Type:*** Number
+  * ***Description:*** ProductID of the weather station's USB device. Should always be 3
+* **path**
+  * ***Type:*** String
+  * ***Description:*** Unique identifier for each station. Very helpful in a multi-station environment.
+* **serialNumber**
+  * ***Type:*** String
+  * ***Description:*** No serial number is returned for me.
+* **manufacturer**
+  * ***Type:*** String
+  * ***Description:*** No manufacturer is returned for me. But, we all know it is AcuRite.
+* **product**
+  * ***Type:*** String
+  * ***Description:*** My device returns "Chaney Instrument"
+* **release**
+  * ***Type:*** Number
+  * ***Description:*** N/A
+* **interface**
+  * ***Type:*** Number
+  * ***Description:*** N/A
+* **_device**
+  * ***Type:*** Object
+  * ***Description:*** node-hid USB device object
+* **_events**
+  * ***Type:*** Object (of arrays)
+  * ***Description:*** Contains arrays of functions, as property named by event type. In absence of off(), one could splice off a function to remove an event.
+* **_refreshInterval**
+  * ***Type:*** Object
+  * ***Description:*** Contains interval id necessary if one wanted to clear the refresh polling.

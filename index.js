@@ -35,7 +35,7 @@ if (!Object.assign) {
 var HID = require('node-hid'), stations = [],
 	windDir = ['NW', 'WSW', 'WNW', 'W', 'NNW', 'SW', 'N', 'SSW', 'ENE', 'SE', 'E', 'ESE', 'NE', 'SSE', 'NNE', 'S'],
 	channels = { 0: 'C', 128: 'B', 192: 'A' },
-	log = true, raw = false;
+	log = false, raw = false;
 
 function refreshStations() {
 	if (log) { console.log('Refreshing stations'); }
@@ -96,7 +96,7 @@ function Station(hid) {
 	} };
 		function refreshInterval(station) {
 			var diff = station.refresh(1);
-			console.log('Refreshing station data');
+			if (log) { console.log('Refreshing station data'); }
 			if (Object.keys(diff).length) { station._events.change.forEach(function(evt) { evt(station.data, diff); }); }
 		}
 
