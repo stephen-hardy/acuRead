@@ -3,6 +3,8 @@ Node.js library for reading data (and updates) from AcuRite weather stations (cu
 
 # Usage
 
+
+
 ## Methods
 * **refresh()**
   * ***Description:*** Refreshes (currently just adds to) the list of known weather stations
@@ -13,6 +15,8 @@ Node.js library for reading data (and updates) from AcuRite weather stations (cu
 * **stations**
   * ***Type:*** Array
   * ***Description:*** Array of "station" objects (see "Station" below)
+
+
 
 ## Station
 * ***Type:*** Object
@@ -35,3 +39,14 @@ Node.js library for reading data (and updates) from AcuRite weather stations (cu
   * ***Type:*** Object
   * ***Description:*** Contains weather data if station's refresh() or on() methods have been called. If an event has been registered with the on() method, the data will be kept up to date and fire "change" events. If not, data will only be updated when refresh() is called. This ensures no 'background processes' if they are not needed. The following data is included:
     * ***channel*** - (string) "A", "B", or "C". Should match the channel selected on the unit.
+    * ***sensorID*** - (number) Manufacturer ID number for the sensor unit.
+    * ***battery*** - (string) "OK" or "Low". Untested, and I don't know how/when the unit determines it is low. But, should match what is shown on the display.
+    * ***speed*** - (number) Wind speed in miles per hour (MPH).
+    * ***signal*** - (number) Values between 0 and 3 indicating signal strength.
+    * ***pressure*** - (number) Atmospheric pressure in millibars, read from the inside sensor in the display.
+    * ***inTemp*** - (number) Temperature in Farenheit, read from the inside sensor in the display.
+    * ***dir*** - (string) Wind direction, represented as an abbreviation of (possible 16) secondary-intercardinal directions.
+    * ***rain*** - (number) Rainfall in hundredths of an inch.
+    * ***outTemp*** - (number) Temperature in Farenheit, read from the outside sensor
+    * ***humidity*** - (number) Humidity percentage, read from the ***outside*** sensor
+    
