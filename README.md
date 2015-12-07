@@ -2,7 +2,6 @@
 Node.js library for reading data (and updates) from AcuRite weather stations (currently supporting 02064C)
 
 
-
 # Example
 ```
 var acuRead = require('acuRead');
@@ -10,10 +9,7 @@ acuRead.stations[0].on('change', console.log);
 ```
 
 
-
 # Usage
-
-
 
 ## Methods
 * **refresh()**
